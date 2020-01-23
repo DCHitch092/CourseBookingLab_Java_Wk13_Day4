@@ -41,7 +41,7 @@ class CourseBookingLabApplicationTests {
 //	Get all customers for a given course
 	@Test
 	public void findByCourseId(){
-		List<Customer> found = customerRepository.findByCourseId(2L);
+		List<Customer> found = customerRepository.findByBookingsCourseId(2L);
 		assertEquals("Juan Miguel", found.get(0).getName());
 		assertEquals(1, found.size());
 	}
