@@ -1,6 +1,7 @@
 package com.codeclan.example.CourseBookingLab;
 
 import com.codeclan.example.CourseBookingLab.models.Course;
+import com.codeclan.example.CourseBookingLab.models.Customer;
 import com.codeclan.example.CourseBookingLab.repositories.BookingRepositories.BookingRepository;
 import com.codeclan.example.CourseBookingLab.repositories.CourseRepositories.CourseRepository;
 import com.codeclan.example.CourseBookingLab.repositories.CustomerRepositories.CustomerRepository;
@@ -38,6 +39,13 @@ class CourseBookingLabApplicationTests {
 	}
 
 //	Get all customers for a given course
+	@Test
+	public void findByCourseId(){
+		List<Customer> found = customerRepository.findByCourseId(2L);
+		assertEquals("Juan Miguel", found.get(0).getName());
+		assertEquals(1, found.size());
+	}
+
 //	Get all courses for a given customer
 //	Get all bookings for a given date
 
