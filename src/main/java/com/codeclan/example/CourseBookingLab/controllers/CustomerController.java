@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-    @GetMapping(value = "/overAgeTownCourse/{age}/{town}/{courseId}")
+    @GetMapping(value = "/overAgeTownCourse/age/{age}/town/{town}/courseId/{courseId}")
     public List<Customer> getAllCustomersOverAgeByTownAndCourse( @PathVariable int age,  @PathVariable String town,  @PathVariable Long courseId){
        return customerRepository.findCustomersByAgeGreaterThanAndTownIgnoreCaseAndBookingsCourseId(age, town, courseId);
     }
