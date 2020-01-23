@@ -47,6 +47,11 @@ class CourseBookingLabApplicationTests {
 	}
 
 //	Get all courses for a given customer
+	@Test
+	public void findCoursesByBookingsCustomerId(){
+		List<Course> found = courseRepository.findCoursesByBookingsCustomerId(1L);
+		assertEquals(4, found.size());
+	}
 //	Get all bookings for a given date
 
 }
