@@ -32,6 +32,7 @@ class CourseBookingLabApplicationTests {
 	}
 
 //	Get all courses with a given rating
+
 	@Test
 	public void findAllCoursesByRating(){
 		List<Course> found = courseRepository.findByRating(5);
@@ -61,5 +62,26 @@ class CourseBookingLabApplicationTests {
 		assertEquals(2, found.size());
 	}
 
+	// Get all customers in a given town for a given course
+	@Test
+	public void findCustomersBookingsTown(){
+	List<Customer> found = customerRepository.findByBookingsCourseIdAndTownIgnoreCase(1L, "Edinburgh");
+	assertEquals(1, found.size());
+	assertEquals("Kurt Swift", found.get(0).getName());
+	}
+
+	// Get all customers over a certain age in a given town for a given course
+	@Test
+	public void findCustomersByAgeGreaterThanAndTownAndCourseId(){
+		List<Customer> found = customerRepository.findCustomersByAgeGreaterThanAndTownIgnoreCaseAndBookingsCourseId(28, "edinburgh", 3L);
+		assertEquals(1, found.size());
+		assertEquals("Kurt Swift", found.get(0).getName());
+	}
+
+	@Test
+	public void canCustomApiUrlFilterByAge(){
+		List<Customer> found = customerRepository.findCustomersByAgeGreaterThanAndTownIgnoreCaseAndBookingsCourseId(30, "edinburgh", 3L);
+		assertEquals(1, found.size());
+	}
 
 }

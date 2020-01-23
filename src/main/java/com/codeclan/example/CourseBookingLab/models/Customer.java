@@ -1,5 +1,6 @@
 package com.codeclan.example.CourseBookingLab.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.tools.javah.Gen;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
